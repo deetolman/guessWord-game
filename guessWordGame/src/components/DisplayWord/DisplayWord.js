@@ -14,7 +14,7 @@ class DisplayWord extends Component {
     return (
     <>
     <div className="DisplayWord">
-        <p>Please guess the word below:</p>
+        <h3>Please guess the word below:</h3>
         <h3>{answer}</h3>
     </div>
     </>

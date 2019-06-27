@@ -6,10 +6,10 @@ import WrongLetters from '../WrongLetters/WrongLetters';
 import SubmitGuess from '../SubmitGuess/SubmitGuess';
 
 class App extends Component {
-  //randomly choose a word
   state = {
     word: words[Math.floor(Math.random() * words.length)],
-    guessedLetters: []
+    guessedLetters: [],
+    guessesRemaining: 6
   }
   updateGuessLetters = (letter) => {
     if(this.state.guessedLetters.includes(letter)){
@@ -20,18 +20,34 @@ class App extends Component {
       })
     }
   }
+  updateGuessesRemaining(letter) {
+    if(!this.state.guessedLetters.includes(letter) && !this.state.word.split(' ').includes(letter)) {
+      this.setState({ guessesRemaining: this.state.guessesRemaining -1 })
+      }
+    }
+  gameOver() {
+    if (this.state.guessesRemaining <= 0) {
+      alert('You lost')
+    } else if (this.wordIsGuessed()) {
+      alert(`You totally Won and guessed the word ${this.state.word}`)
+    }
+  }
+
   render() {
     return (
     <>
     <div className="App">
       <header className="App-header">
+        <h1>Guess the plant game!</h1>
+        <h2>THEME: PLANTS</h2>
         <p>
-          Welcome to Hangman!
-        </p>
-        {this.state.word}
         <DisplayWord word={this.state.word} guessedLetters={this.state.guessedLetters} />
-        <WrongLetters word={this.state.word} guessedLetters={this.state.guessedLetters} />
+        </p>
         <SubmitGuess updateGuessLetters={this.updateGuessLetters} />
+        <h3>Letters not in the word:</h3>
+        <p className="Letters">
+        <WrongLetters word={this.state.word} guessedLetters={this.state.guessedLetters} />
+        </p>
       </header>
     </div>
     </>
@@ -40,14 +56,5 @@ class App extends Component {
 }
 
 export default App;
-// var word = words[Math.floor(Math.random() * words.length)];
-
-//display correctly guessed letters with _
-//display letters not yet guessed
-//let user guess a letter
-//check if letter is in the word
-//update guess remaining
-//repeat until game is over
-//game over: word guessed or out of guesses
 
 

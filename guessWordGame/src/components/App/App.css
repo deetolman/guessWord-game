@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-image: url('https://images.unsplash.com/photo-1447012256906-c2ed7aa5632e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  line-height: 1;
+}
+h1, h2, h3, p {
+  background-color: gray;
+  opacity: 0.85;
+  padding: 5px;
+}
+
+.Letters {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1em;
+  opacity: 1;
+  background-color: gray;
+  padding: 10px;
+}
+button {
+  color: black;
+  background-color: white;
+}
+input {
+  height: 30px;
+  width: 60px;
+  margin: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: gray;
+    min-height: 50vh;
+  }
+}
